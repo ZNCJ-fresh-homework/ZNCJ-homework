@@ -1,0 +1,44 @@
+void LED_ON(void)
+{
+HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_Pin_SET);
+}
+
+
+
+
+uint8_t Key_Get(void)
+{
+   uint8_t keynum;
+   if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_2)==SET)
+    {
+       Delay_ms(20);
+       while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_2)==RESET)  ;
+       Delay_ms(20);
+        keynum=1;
+    }
+  return keynum;
+}
+
+void LED_turn(void)
+{
+   if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_1)==SET)
+  {
+    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_Pin_RESET);
+  }else if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_1)==RESET)
+  { 
+     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_Pin_SET);
+  }
+  
+}
+
+
+uint8_t key;
+main(void)
+{
+  key=Key_Get();
+   if(key==1)
+   {
+     LED_turn();
+     key=0;
+   }
+}
