@@ -1,0 +1,21 @@
+int main(void)
+{
+/*begining*/
+HAL_GPIO_Init();
+/*无*/
+while(1)
+{
+/*无*/
+if(HAL_GPIO_ReadPin(GPIOA,GPIO_Pin0)==GPIO_Pin_Reset){
+if(HAL_GPIO_ReadPin(GPIOA,GPIO_Pin0)==GPIO_Pin_Reset){
+/*无*/
+Hal_Delay(20);
+/*点灯*/
+HAL_GPIO_TogglePin(GPIOA,GPIO_Pin_1);
+/*无*/
+while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==GPIO_PIN_RESET);
+/*ending*/
+}
+}
+}
+}
