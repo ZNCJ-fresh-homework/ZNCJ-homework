@@ -1,0 +1,31 @@
+任务1
+
+int main()
+{
+		
+	MX_GPIO_Init();
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5, GPIO_PIN_SET);  //点亮小灯
+	while(1)
+	{
+
+	}
+}
+
+任务2：
+int main()
+{	
+	/*配置成上拉输入*/
+	uint8_t key_last = 1;    /* 上次电平，1 = 没按 */
+
+	while (1)
+	{
+    		uint8_t key_now = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
+
+    		if (key_last == 1 && key_now == 0)                 HAL_Delay(20);                          
+        	if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == 0)         HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);   
+   	 	key_last = key_now;
+    		HAL_Delay(5);
+	}
+
+}
+
